@@ -30,6 +30,8 @@ jobs:
         working-directory: client
         run: npm ci
       - name: Build
+        with:
+          enablement: true
         working-directory: client
         run: npm run build
       - name: Setup Pages
