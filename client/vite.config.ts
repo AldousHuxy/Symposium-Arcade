@@ -6,6 +6,7 @@ import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Symposium-Arcade/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] }),
@@ -15,6 +16,10 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
+  },
+  server: {
+    host: true,
+    port: 3000,
   }
 })
   
