@@ -1,7 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
 
-// ─── Types ──────────────────────────────────────────────────────────────────
-
 export interface FloodStage {
   key: string;
   label: string;

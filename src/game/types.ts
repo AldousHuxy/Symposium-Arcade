@@ -1,8 +1,6 @@
-// ─── Game Types ──────────────────────────────────────────────────────────────
-
 export type GamePhase = 'title' | 'planning' | 'storm' | 'results';
 
-export interface MitigationAsset {
+export type MitigationAsset = {
   id: string;
   name: string;
   cost: number;
@@ -16,14 +14,14 @@ export type AssetEffect =
   | { type: 'localProtection'; radius: number }       // protects houses within radius
   | { type: 'removeHouse' };                           // buyout — removes a house from risk
 
-export interface PlacedAsset {
+export type PlacedAsset = {
   assetId: string;
   x: number;
   z: number;
   id: string; // unique placement id
 }
 
-export interface HouseState {
+export type HouseState = {
   x: number;
   z: number;
   ground: number;
@@ -33,14 +31,14 @@ export interface HouseState {
   removed: boolean;
 }
 
-export interface StormEvent {
+export type StormEvent = {
   name: string;
   level: number;
   description: string;
   probability: string;
 }
 
-export interface GameState {
+export type GameState = {
   phase: GamePhase;
   budget: number;
   maxBudget: number;
