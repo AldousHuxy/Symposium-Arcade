@@ -85,12 +85,12 @@ export function ResultsScreen({ state, onPlayAgain }: ResultsScreenProps) {
   else if (pct >= 40) { grade = 'D'; gradeColor = '#ff8844'; }
 
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center"
+    <div className="absolute inset-0 z-50 overflow-y-auto"
       style={{ background: 'rgba(6,36,45,0.95)', paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
 
-      <div className="mx-4 flex max-w-md flex-col items-center gap-5 text-center">
+      <div className="mx-auto flex max-w-md flex-col items-center gap-4 px-4 py-8 text-center">
         {/* Grade */}
-        <div className="flex h-24 w-24 items-center justify-center rounded-full text-5xl font-black md:h-28 md:w-28 md:text-6xl"
+        <div className="flex h-20 w-20 items-center justify-center rounded-full text-4xl font-black md:h-28 md:w-28 md:text-6xl"
           style={{ background: `${gradeColor}22`, color: gradeColor, border: `3px solid ${gradeColor}` }}>
           {grade}
         </div>
