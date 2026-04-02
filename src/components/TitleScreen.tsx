@@ -51,7 +51,7 @@ export default function TitleScreen({ onStart }: TitleScreenProps) {
         <button
           id="start-button"
           onClick={onStart}
-          className="mt-2 rounded-full bg-green-500 px-12 py-4 text-xl font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl"
+          className="cursor-pointer mt-2 rounded-full bg-green-500 px-12 py-4 text-xl font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl"
           style={{
             background: 'linear-gradient(135deg, #29C499, #1C8281)',
             boxShadow: '0 0 30px rgba(41,196,153,0.3)',

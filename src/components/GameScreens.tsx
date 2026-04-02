@@ -1,5 +1,5 @@
 import type { GameState } from '../game/types';
-import { formatCurrency } from '../game/types';
+import { ASSET_CATALOG, formatCurrency } from '../game/types';
 
 interface StormOverlayProps {
   state: GameState;
@@ -55,7 +55,7 @@ export function StormOverlay({ state, onShowResults }: StormOverlayProps) {
 
           <button
             onClick={onShowResults}
-            className="mt-2 w-full rounded-xl px-6 py-3 text-base font-bold text-white shadow-lg transition-all active:scale-95"
+            className="mt-2 w-full cursor-pointer rounded-xl px-6 py-3 text-base font-bold text-white shadow-lg transition-all active:scale-95"
             style={{ background: 'linear-gradient(135deg, #80A7F7, #62b4cc)' }}
           >
             See Results →
@@ -108,6 +108,42 @@ export function ResultsScreen({ state, onPlayAgain }: ResultsScreenProps) {
           <StatCard label="Assets Placed" value={String(state.placedAssets.length)} color="#66E0D5" />
         </div>
 
+        {/* Unspent budget feedback */}
+        {state.budget > 0 ? (
+          <div className="w-full rounded-xl p-3 text-left text-sm"
+            style={{ background: 'rgba(255,221,0,0.06)', border: '1px solid rgba(255,221,0,0.18)' }}>
+            <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#FFDD00' }}>
+              💡 Unspent Budget — {formatCurrency(state.budget)} left
+            </span>
+            <p className="mt-1 text-xs" style={{ color: '#8ab0c8' }}>
+              You could have also invested in:
+            </p>
+            <ul className="mt-1.5 flex flex-col gap-1.5">
+              {ASSET_CATALOG
+                .filter(a => state.budget >= a.cost)
+                .sort((a, b) => b.cost - a.cost)
+                .slice(0, 3)
+                .map(a => (
+                  <li key={a.id} className="flex items-center gap-2">
+                    <span className="text-base">{a.icon}</span>
+                    <span className="font-semibold" style={{ color: '#cce8f8' }}>{a.name}</span>
+                    <span className="ml-auto text-xs font-bold" style={{ color: '#FFDD00' }}>{formatCurrency(a.cost)}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="w-full rounded-xl p-3 text-left text-sm"
+            style={{ background: 'rgba(41,196,153,0.08)', border: '1px solid rgba(41,196,153,0.25)' }}>
+            <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#29C499' }}>
+              💚 Budget Fully Invested
+            </span>
+            <p className="mt-1" style={{ color: '#8ab0c8' }}>
+              You put every dollar to work protecting the neighborhood. Excellent resource management!
+            </p>
+          </div>
+        )}
+
         {/* Trivia */}
         <div className="w-full rounded-xl p-3 text-left text-sm"
           style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
@@ -123,7 +159,7 @@ export function ResultsScreen({ state, onPlayAgain }: ResultsScreenProps) {
         {/* Play again */}
         <button
           onClick={onPlayAgain}
-          className="w-full rounded-xl px-8 py-4 text-lg font-bold text-white shadow-2xl transition-all active:scale-95"
+          className="w-full cursor-pointer rounded-xl px-8 py-4 text-lg font-bold text-white shadow-2xl transition-all active:scale-95"
           style={{
             background: 'linear-gradient(135deg, #29C499, #1C8281)',
             boxShadow: '0 0 30px rgba(41,196,153,0.3)',

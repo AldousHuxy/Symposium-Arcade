@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 
-export interface FloodStage {
+export type FloodStage = {
   key: string;
   label: string;
   level: number;
@@ -148,7 +148,7 @@ export default function FloodHUD({ waterLevel, setWaterLevel, activeStage, setAc
             <button
               key={stage.key}
               onClick={() => handleStageClick(stage)}
-              className="group relative w-full overflow-hidden rounded-lg px-3 py-2.5 text-left transition-all duration-200"
+              className="group relative w-full cursor-pointer overflow-hidden rounded-lg px-3 py-2.5 text-left transition-all duration-200"
               style={{
                 background: activeStage === stage.key ? stage.buttonColor : 'rgba(255,255,255,0.07)',
                 border: `1.5px solid ${activeStage === stage.key ? stage.buttonColor : 'rgba(255,255,255,0.12)'}`,

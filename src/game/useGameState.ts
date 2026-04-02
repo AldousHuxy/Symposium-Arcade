@@ -221,6 +221,14 @@ export function useGameState() {
     };
   }, [state.phase]);
 
+  // ── Auto-trigger storm when planning time runs out ───────────────────────
+
+  useEffect(() => {
+    if (state.phase === 'planning' && state.timeRemaining === 0) {
+      triggerStorm();
+    }
+  }, [state.phase, state.timeRemaining, triggerStorm]);
+
   return {
     state,
     startGame,

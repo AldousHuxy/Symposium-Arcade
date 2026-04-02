@@ -85,7 +85,7 @@ export default function GameHUD({ state, onSelectAsset, onUndo, onTriggerStorm }
             <button
               onClick={onUndo}
               disabled={state.placedAssets.length === 0}
-              className="rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors disabled:opacity-30"
+              className="cursor-pointer rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors disabled:opacity-30"
               style={{ background: 'rgba(255,255,255,0.1)', color: '#cce8f8' }}
             >
               ↩ Undo
@@ -96,7 +96,7 @@ export default function GameHUD({ state, onSelectAsset, onUndo, onTriggerStorm }
             </span>
             <button
               onClick={onTriggerStorm}
-              className="rounded-lg px-4 py-1.5 text-sm font-bold text-white shadow-lg transition-all active:scale-95"
+              className="cursor-pointer rounded-lg px-4 py-1.5 text-sm font-bold text-white shadow-lg transition-all active:scale-95"
               style={{ background: 'linear-gradient(135deg, #b82020, #cc4422)' }}
             >
               ⛈ Bring the Storm!
@@ -114,7 +114,7 @@ export default function GameHUD({ state, onSelectAsset, onUndo, onTriggerStorm }
                   key={asset.id}
                   onClick={() => onSelectAsset(selected ? null : asset.id)}
                   disabled={!canAfford}
-                  className="flex-shrink-0 rounded-xl p-2.5 text-left transition-all active:scale-95 disabled:opacity-40 md:p-3"
+                  className="flex-shrink-0 cursor-pointer rounded-xl p-2.5 text-left transition-all active:scale-95 disabled:opacity-40 md:p-3"
                   style={{
                     width: 130,
                     background: selected ? 'rgba(98,180,204,0.25)' : 'rgba(255,255,255,0.06)',
