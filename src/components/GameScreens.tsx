@@ -1,5 +1,6 @@
 import type { GameState } from '../game/types';
 import { ASSET_CATALOG, formatCurrency } from '../game/types';
+import mhfdLogo from '../assets/MHFD-Logo.svg';
 
 interface StormOverlayProps {
   state: GameState;
@@ -11,9 +12,9 @@ export function StormOverlay({ state, onShowResults }: StormOverlayProps) {
     <div className="pointer-events-none absolute inset-0 flex flex-col">
       {/* Top bar */}
       <div className="pointer-events-auto flex items-center gap-4 px-4 py-3 md:px-5"
-        style={{ background: 'rgba(0,38,77,0.92)', backdropFilter: 'blur(6px)' }}>
+        style={{ background: 'rgba(0,38,77,0.92)', backdropFilter: 'blur(6px)', paddingTop: 'calc(env(safe-area-inset-top) + 0.75rem)' }}>
         <div className="flex flex-col leading-tight">
-          <span className="text-base font-black tracking-widest text-white md:text-xl">MHFD</span>
+          <img src={mhfdLogo} alt="Mile High Flood District" className="h-6 w-auto md:h-7" style={{ filter: 'brightness(0) invert(1)' }} />
           <span className="text-[10px] font-medium tracking-wide md:text-xs" style={{ color: '#7fc4e8' }}>
             Save the Neighborhood
           </span>
@@ -85,7 +86,7 @@ export function ResultsScreen({ state, onPlayAgain }: ResultsScreenProps) {
 
   return (
     <div className="absolute inset-0 z-50 flex items-center justify-center"
-      style={{ background: 'rgba(6,36,45,0.95)' }}>
+      style={{ background: 'rgba(6,36,45,0.95)', paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
 
       <div className="mx-4 flex max-w-md flex-col items-center gap-5 text-center">
         {/* Grade */}

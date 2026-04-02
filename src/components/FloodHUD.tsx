@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
+import mhfdLogo from '../assets/MHFD-Logo.svg';
 
 export type FloodStage = {
   key: string;
@@ -107,10 +108,10 @@ export default function FloodHUD({ waterLevel, setWaterLevel, activeStage, setAc
 
       {/* ── Top bar ─────────────────────────────────────────────────────── */}
       <div className="pointer-events-auto flex items-center gap-4 px-5 py-3"
-        style={{ background: 'rgba(0,38,77,0.92)', backdropFilter: 'blur(6px)' }}>
-        {/* MHFD logo text */}
+        style={{ background: 'rgba(0,38,77,0.92)', backdropFilter: 'blur(6px)', paddingTop: 'calc(env(safe-area-inset-top) + 0.75rem)' }}>
+        {/* MHFD logo */}
         <div className="flex flex-col leading-tight">
-          <span className="font-black tracking-widest text-white" style={{ fontSize: 20 }}>MHFD</span>
+          <img src={mhfdLogo} alt="Mile High Flood District" className="h-7 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
           <span className="text-xs font-medium tracking-wide" style={{ color: '#7fc4e8' }}>
             Mile High Flood District
           </span>
@@ -257,8 +258,8 @@ export default function FloodHUD({ waterLevel, setWaterLevel, activeStage, setAc
       </div>
 
       {/* ── Bottom legend ────────────────────────────────────────────────── */}
-      <div className="pointer-events-auto m-3 self-start rounded-xl px-4 py-2.5 shadow-xl"
-        style={{ background: 'rgba(0,20,50,0.85)', backdropFilter: 'blur(8px)' }}>
+      <div className="pointer-events-auto mx-3 mt-3 self-start rounded-xl px-4 py-2.5 shadow-xl"
+        style={{ background: 'rgba(0,20,50,0.85)', backdropFilter: 'blur(8px)', marginBottom: 'calc(env(safe-area-inset-bottom) + 0.75rem)' }}>
         <div className="flex flex-wrap items-center gap-4">
           <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#7fc4e8' }}>
             Legend
@@ -266,7 +267,7 @@ export default function FloodHUD({ waterLevel, setWaterLevel, activeStage, setAc
           {[
             { color: '#6b9fc4', label: 'River Channel' },
             { color: '#5c9e3a', label: 'Riparian Zone' },
-            { color: 'rgba(34,85,204,0.5)',  border: '#2255cc', label: '100-yr Zone (FEMA AE)', striped: true },
+            { color: 'rgba(34,85,204,0.5)', border: '#2255cc', label: '100-yr Zone (FEMA AE)', striped: true },
             { color: 'rgba(204,119,34,0.5)', border: '#cc7722', label: '500-yr Zone (FEMA X)', striped: true },
             { color: '#4a7a3a', label: 'Upland / Safe' },
             { color: '#cc2222', label: 'Flooded Structure' },

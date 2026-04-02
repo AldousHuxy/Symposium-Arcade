@@ -1,5 +1,6 @@
 import type { GameState } from '../game/types';
 import { ASSET_CATALOG, formatCurrency } from '../game/types';
+import mhfdLogo from '../assets/MHFD-Logo.svg';
 
 interface GameHUDProps {
   state: GameState;
@@ -17,9 +18,9 @@ export default function GameHUD({ state, onSelectAsset, onUndo, onTriggerStorm }
 
       {/* ── Top bar ─────────────────────────────────────────────────────── */}
       <div className="pointer-events-auto flex items-center gap-3 px-4 py-2 md:gap-4 md:px-5 md:py-3"
-        style={{ background: 'rgba(0,38,77,0.92)', backdropFilter: 'blur(6px)' }}>
+        style={{ background: 'rgba(0,38,77,0.92)', backdropFilter: 'blur(6px)', paddingTop: 'calc(env(safe-area-inset-top) + 0.5rem)' }}>
         <div className="flex flex-col leading-tight">
-          <span className="text-base font-black tracking-widest text-white md:text-xl">MHFD</span>
+          <img src={mhfdLogo} alt="Mile High Flood District" className="h-6 w-auto md:h-7" style={{ filter: 'brightness(0) invert(1)' }} />
           <span className="text-[10px] font-medium tracking-wide md:text-xs" style={{ color: '#7fc4e8' }}>
             Save the Neighborhood
           </span>

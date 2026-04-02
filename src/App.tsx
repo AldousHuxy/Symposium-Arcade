@@ -17,7 +17,7 @@ const App = () => {
   } = useGameState();
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden">
+    <div className="relative h-dvh w-screen overflow-hidden">
       {/* 3D Canvas always renders behind everything */}
       <div className="absolute inset-0">
         <GameScene

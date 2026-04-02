@@ -10,7 +10,7 @@ export default function TitleScreen({ onStart }: TitleScreenProps) {
 
   return (
     <div className="absolute inset-0 z-50 flex items-center justify-center"
-      style={{ background: 'linear-gradient(135deg, #06242D 0%, #191533 50%, #251863 100%)' }}>
+      style={{ background: 'linear-gradient(135deg, #06242D 0%, #191533 50%, #251863 100%)', paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
 
       <div className="mx-4 flex max-w-lg flex-col items-center gap-6 text-center">
         {/* MHFD Branding */}

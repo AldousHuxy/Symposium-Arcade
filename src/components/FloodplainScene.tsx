@@ -235,6 +235,16 @@ function Tree({
   );
 }
 
+const TREE_CLEARANCE = 2.0; // min distance from any house centre
+
+function tooCloseToHouse(x: number, z: number): boolean {
+  return HOUSES.some(h => {
+    const dx = h.x - x;
+    const dz = h.z - z;
+    return Math.sqrt(dx * dx + dz * dz) < TREE_CLEARANCE;
+  });
+}
+
 function Vegetation() {
   const trees = useMemo(() => {
     const items: Array<{
@@ -244,9 +254,11 @@ function Vegetation() {
     // Cottonwoods along channel edges (x ≈ ±2.5–4.5)
     for (let i = 0; i < 18; i++) {
       const side = i % 2 === 0 ? 1 : -1;
+      const x = side * (2.6 + Math.random() * 1.8);
+      const z = -9 + i * 1.1 + (Math.random() - 0.5) * 0.8;
+      if (tooCloseToHouse(x, z)) continue;
       items.push({
-        x: side * (2.6 + Math.random() * 1.8),
-        z: -9 + i * 1.1 + (Math.random() - 0.5) * 0.8,
+        x, z,
         height: 1.8 + Math.random() * 0.9,
         radius: 0.55 + Math.random() * 0.25,
         color: '#5c9e3a',
@@ -257,9 +269,11 @@ function Vegetation() {
     // Willows right at channel banks (x ≈ ±1.5–2.6)
     for (let i = 0; i < 12; i++) {
       const side = i % 2 === 0 ? 1 : -1;
+      const x = side * (1.5 + Math.random() * 1.0);
+      const z = -8 + i * 1.4 + (Math.random() - 0.5);
+      if (tooCloseToHouse(x, z)) continue;
       items.push({
-        x: side * (1.5 + Math.random() * 1.0),
-        z: -8 + i * 1.4 + (Math.random() - 0.5),
+        x, z,
         height: 1.2 + Math.random() * 0.6,
         radius: 0.7 + Math.random() * 0.3,
         color: '#77b852',
@@ -269,9 +283,11 @@ function Vegetation() {
     // Upland trees (x ≈ ±10.5–14)
     for (let i = 0; i < 22; i++) {
       const side = i % 2 === 0 ? 1 : -1;
+      const x = side * (10.5 + Math.random() * 3.5);
+      const z = -9.5 + i * 0.9 + (Math.random() - 0.5);
+      if (tooCloseToHouse(x, z)) continue;
       items.push({
-        x: side * (10.5 + Math.random() * 3.5),
-        z: -9.5 + i * 0.9 + (Math.random() - 0.5),
+        x, z,
         height: 1.4 + Math.random() * 0.8,
         radius: 0.5 + Math.random() * 0.2,
         color: '#3a7a2a',
